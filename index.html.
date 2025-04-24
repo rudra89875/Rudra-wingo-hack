@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WINGO HACK PRO</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding: 40px;
+    }
+    input, select, button {
+      margin: 10px;
+      padding: 10px;
+      background: black;
+      border: 1px solid #00ff00;
+      color: #00ff00;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+    th, td {
+      border: 1px solid #00ff00;
+      padding: 10px;
+    }
+    .warning {
+      color: #ff0000;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>WINGO HACK PRO</h1>
+  <p>Predict the next winning outcome with up to 99% accuracy!</p>
+
+  <input type="text" id="periodInput" placeholder="Enter Period Number">
+  <select id="timeSelect">
+    <option value="30s">30 Seconds</option>
+    <option value="1m">1 Minute</option>
+    <option value="3m">3 Minutes</option>
+  </select>
+  <button onclick="startPrediction()">Start Prediction</button>
+
+  <div class="warning">* Must be registered and minimum level 2 for accurate results</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Color</th>
+        <th>Number</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="predictionTable">
+      <!-- Example rows -->
+    </tbody>
+  </table>
+
+  <script>
+    function startPrediction() {
+      const period = document.getElementById('periodInput').value;
+      const time = document.getElementById('timeSelect').value;
+
+      const colors = ['Green', 'Red', 'Violet'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      const randomNumber = Math.floor(Math.random() * 10);
+      const status = "Predicted";
+
+      const row = `<tr>
+        <td>${period}</td>
+        <td>${randomColor}</td>
+        <td>${randomNumber}</td>
+        <td>${status}</td>
+      </tr>`;
+
+      document.getElementById('predictionTable').innerHTML = row + document.getElementById('predictionTable').innerHTML;
+    }
+  </script>
+</body>
+</html>
